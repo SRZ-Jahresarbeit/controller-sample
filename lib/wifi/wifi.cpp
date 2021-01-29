@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <wifi.h>
+#include <classWifi.h>
 
 Wifi::Wifi(char ssid[], char password[], char hostname[], uint8_t tries, uint8_t connectTimeout)
 {

@@ -1,4 +1,5 @@
-#include <Arduino.h>
+//#include <Arduino.h>
+class Arduino;
 #include <WiFi.h>
 
 class Wifi

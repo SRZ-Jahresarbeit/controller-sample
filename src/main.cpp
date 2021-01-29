@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <SSD1306.h>
-#include <wifi.h>
+#include <classWifi.h>
 #include <NTPClient.h>
 #include <ctime>
 
