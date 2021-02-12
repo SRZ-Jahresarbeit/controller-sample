@@ -16,7 +16,7 @@
 #define OLED_SDA 4
 #define OLED_SCL 15
 
-#define DISPLAY_UPDATE_RATE 5 // seconds
+#define DISPLAY_UPDATE_RATE 300 // seconds
 
 #define SSID "WLAN Marcel"
 #define SSID_PASS "Das ist ein sicheres Passwort11!!!1"
