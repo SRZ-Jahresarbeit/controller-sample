@@ -16,7 +16,7 @@
 #define OLED_SDA 4
 #define OLED_SCL 15
 
-#define DISPLAY_UPDATE_RATE 300 // seconds
+#define DISPLAY_UPDATE_RATE 5 // seconds
 
 #define SSID "WLAN Marcel"
 #define SSID_PASS "Das ist ein sicheres Passwort11!!!1"
@@ -74,9 +74,8 @@ void setup()
     display.setTextAlignment(TEXT_ALIGN_LEFT);
     Serial.println(" done.");
 
-    Serial.print("Connection to mqtt...");
+    Serial.print("Setting up mqtt...");
     mqttClient.setServer(MQTT_ADDRESS, MQTT_PORT);
-
     Serial.println(" done.");
 }
 
