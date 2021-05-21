@@ -42,6 +42,14 @@ float calcSeaLevelPressure(float height, float pressure)
     return pressure / pow(1 - (height / 44330), 1 / 0.1903);
 }
 
+void drawMeasurement(String title, String value)
+{
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(0, 0, title);
+    display.setFont(ArialMT_Plain_24);
+    display.drawString(0, 20, value);
+}
+
 void setup()
 {
     Serial.begin(115200);
@@ -64,7 +72,6 @@ void setup()
     digitalWrite(OLED_RESET, HIGH);
     display.init();
 
-    display.setFont(ArialMT_Plain_24);
     display.setTextAlignment(TEXT_ALIGN_LEFT);
 
     // calculate current sea level pressure
@@ -83,25 +90,25 @@ void loop()
     case TEMPERATURE:
         temperature = bme.readTemperature();
         Serial.println("temperature = " + String(temperature) + "°C");
-        display.drawString(0, 0, String(temperature) + "°C");
+        drawMeasurement("Temperature:", String(temperature) + "°C");
         displayState = HUMIDITY;
         break;
     case HUMIDITY:
         humidity = bme.readHumidity();
         Serial.println("humidity    = " + String(humidity) + "%");
-        display.drawString(0, 0, String(humidity) + "%");
+        drawMeasurement("Humiditiy:", String(humidity) + "%");
         displayState = PRESSURE;
         break;
     case PRESSURE:
         pressure = bme.readPressure() / 100.0F;
         Serial.println("pressure    = " + String(pressure) + "hPa");
-        display.drawString(0, 0, String(pressure) + "hPa");
+        drawMeasurement("Pressure:", String(pressure) + "hPa");
         displayState = ALTITUDE;
         break;
     case ALTITUDE:
         altitude = bme.readAltitude(seaLevelPressure);
         Serial.println("altitude    = " + String(altitude) + "NHN");
-        display.drawString(0, 0, String(altitude) + "NHN");
+        drawMeasurement("Altitude:", String(altitude) + "NHN");
         displayState = TEMPERATURE;
         Serial.println("=======================");
         break;
